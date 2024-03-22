@@ -6,7 +6,7 @@ export class TaskRouter {
 
     public createRoutes(): Router {
         const router = express.Router();
-
+        
         router.get('/', taskController.getAllTasks);
 
         return router;

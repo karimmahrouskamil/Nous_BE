@@ -1,7 +1,10 @@
-import Task from '../models/task';
+import { Task } from '../models/task';
+import TaskModel from '../schema/task.schema';
 
-export const taskService = {
-  async getAllTasks() {
-    return Task.find();
+export class TaskService {
+  public static async getAllTasks(): Promise<Task[]> {
+    return TaskModel.find();
   }
-};
+
+
+}
