@@ -1,11 +1,12 @@
 import { Application } from "./app";
-
+import  { connectDB} from './../config'
 class AssessmentNous {
   public static start() {
     console.info('starting...');
     const port = 3030;
     const app = new Application();
-    app.init().then(() => {
+    app.init().then(async () => {
+     await connectDB();
       app.express.listen(port, () => {
         console.info("*****************************************************************************");
         console.info(`**                         ASSESSMENT NOUS                                 **`);
