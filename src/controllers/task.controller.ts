@@ -27,7 +27,8 @@ export class TaskController {
       const task = await TaskService.updateTaskById(id, body);
       res.status(200).json(task);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      throw new Error('Database operation failed');
+      // res.status(500).json({ error: error.message });
     }
   }
   public static async createNewTask(req: Request, res: Response, _next: NextFunction) {
@@ -36,7 +37,8 @@ export class TaskController {
       const newTask = await TaskService.createTask(newTaskBody);
       res.status(201).json(newTask);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      throw new Error('Database operation failed');
+      //res.status(500).json({ error: error.message });
     }
   }
 
