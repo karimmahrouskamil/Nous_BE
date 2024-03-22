@@ -5,6 +5,8 @@ export class TaskService {
   public static async getAllTasks(): Promise<Task[]> {
     return TaskModel.find();
   }
-
+  public static async getTaskById(id): Promise<Task[]> {
+    return TaskModel.findById(id);
+  }
 
 }
