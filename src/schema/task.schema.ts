@@ -2,9 +2,9 @@ import { Schema, model } from 'mongoose';
 import { Task } from '../models/task';
 
 const TaskSchema = new Schema<Task>({
-  title: { type: String, required: true },
-  text: { type: String, required: true },
-  status: { type: String, enum: ['TODO', 'IN_PROGRESS', 'DONE'], required: true },
+  title: { type: String, required: false },
+  text: { type: String, required: false },
+  status: { type: String, enum: ['TODO', 'IN_PROGRESS', 'DONE'], required: false },
   createdAt: { type: Date, default: Date.now }
 }, { collection: 'Task' });
 

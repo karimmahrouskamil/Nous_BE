@@ -32,7 +32,8 @@ export class TaskController {
   }
   public static async createNewTask(req: Request, res: Response, _next: NextFunction) {
     try {
-      const newTask = await TaskService.createTask(req.body);
+      const newTaskBody = req.body 
+      const newTask = await TaskService.createTask(newTaskBody);
       res.status(201).json(newTask);
     } catch (error) {
       res.status(500).json({ error: error.message });
