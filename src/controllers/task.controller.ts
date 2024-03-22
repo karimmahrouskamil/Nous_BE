@@ -29,4 +29,13 @@ export class TaskController {
       res.status(500).json({ error: error.message });
     }
   }
+  public static async createNewTask(req: Request, res: Response, _next: NextFunction) {
+    try {
+      const newTask = await TaskService.createTask(req.body);
+      res.status(201).json(newTask);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
 };

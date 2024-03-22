@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import { Router } from "express-serve-static-core";
 import { TaskController } from "../controllers/task.controller";
 
@@ -10,7 +10,7 @@ export class TaskRouter {
         router.get('/', TaskController.getAllTasks); 
         router.get('/:id', TaskController.getTaskById);
         router.put('/:id', TaskController.updateTaskById);
-
+        router.post('/', TaskController.createNewTask);
         return router;
     }
 }
