@@ -6,10 +6,10 @@ export class TaskRouter {
 
     public createRoutes(): Router {
         const router = express.Router();
-        // http://localhost:3030/tasks/
-        router.get('/', TaskController.getAllTasks);
-        // http://localhost:3030/tasks/65fda3820a8e8f8481a91581
+        // http://localhost:3030/tasks/, http://localhost:3030/tasks/65fda3820a8e8f8481a91581
+        router.get('/', TaskController.getAllTasks); 
         router.get('/:id', TaskController.getTaskById);
+        router.put('/:id', TaskController.updateTaskById);
 
         return router;
     }

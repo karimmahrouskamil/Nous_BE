@@ -13,8 +13,18 @@ export class TaskController {
   public static async getTaskById(req: Request, res: Response, _next: NextFunction) {
     try {
       const id = req.params.id
-      const tasks = await TaskService.getTaskById(id);
-      res.status(200).json(tasks);
+      const task = await TaskService.getTaskById(id);
+      res.status(200).json(task);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  public static async updateTaskById(req: Request, res: Response, _next: NextFunction) {
+    try {
+      const id = req.params.id
+      const body = req.body
+      const task = await TaskService.updateTaskById(id, body);
+      res.status(200).json(task);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
