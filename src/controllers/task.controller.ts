@@ -15,8 +15,9 @@ export class TaskController {
       const id = req.params.id
       const task = await TaskService.getTaskById(id);
       res.status(200).json(task);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
+    } catch (error) { 
+      _next(error);
+      // res.status(500).json({ error: error.message });
     }
   }
   public static async updateTaskById(req: Request, res: Response, _next: NextFunction) {

@@ -5,8 +5,12 @@ export class TaskService {
   public static async getAllTasks(): Promise<Task[]> {
     return TaskModel.find();
   }
-  public static async getTaskById(id): Promise<Task | null> {
-    return TaskModel.findById(id);
+  public static async getTaskById(id): Promise<Task[] | any> {
+    const foundTask = TaskModel.findById(id)
+    if (!foundTask) {
+      throw new Error('Task not found');
+  }
+    return foundTask;
   }
   public static async updateTaskById(id, data): Promise<Task | null> {
     return TaskModel.findByIdAndUpdate(id, data, { new: true })
