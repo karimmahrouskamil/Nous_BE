@@ -1,7 +1,6 @@
-import { CommentService } from '../src/services/comment.service';
-import CommentModel from '../src/schema/comment.schema';
-import 'jest';
-import { Comment } from '../src/models/comment';
+import { CommentService } from '../src/services/comment.service'; 
+import CommentModel from '../src/schema/comment.schema'; 
+import 'jest'; 
 
 jest.mock('../src/schema/comment.schema'); // Mocking the CommentModel module
 
@@ -30,6 +29,8 @@ describe('CommentService', () => {
     it('should throw an error when comment text is empty', async () => {
       await expect(CommentService.createComment('taskId', '')).rejects.toThrow('Comment text cannot be empty');
     });
+
+
 
   });
 });
