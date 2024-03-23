@@ -1,12 +1,14 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { TaskRouter } from './routes/task.router';
 import bodyParser from 'body-parser'
+import { CommentRouter } from './routes/comment.router';
 export class Application {
   public express;
 
   public init(): Promise<void> {
     return new Promise((resolve, _reject) => {
       const taskRouter: TaskRouter = new TaskRouter();
+      const commentRouter: CommentRouter = new CommentRouter();
       this.express = express();
 
       this.express.use(bodyParser.urlencoded({
@@ -22,6 +24,7 @@ export class Application {
         }
       });
 
+      this.express.use('/comments', commentRouter.createRoutes());
       this.express.use('/tasks', taskRouter.createRoutes());
       resolve();
     })
