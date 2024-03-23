@@ -8,6 +8,8 @@ export class CommentRouter {
         const router = express.Router();
 
         router.get('/:taskId', CommentController.getAllComments);
+        router.post('/:taskId/comments', CommentController.createComments);
+        
         return router;
     }
 }

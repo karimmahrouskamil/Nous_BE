@@ -11,5 +11,20 @@ export class CommentController {
       res.status(500).json({ error: error.message });
     }
   } 
-
+  public static async createComments(req: Request, res: Response, _next: NextFunction) {
+    try {
+     const taskId = req.params.taskId
+     const commentText = req.body.text;
+      const comment = await CommentService.createComment(taskId, commentText);
+      res.status(201).json(comment);
+    } catch (err) {
+      if (err.message === 'Comment text cannot be empty') {
+        res.status(400).json({ message: 'Comment text is required' });
+      } else if (err.message.includes('Task not found')) {
+        res.status(404).json({ message: 'Task not found' });
+      } else {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  } 
 };
