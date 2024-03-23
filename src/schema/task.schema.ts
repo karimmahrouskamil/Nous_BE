@@ -5,7 +5,8 @@ const TaskSchema = new Schema<Task>({
   title: { type: String, required: false },
   text: { type: String, required: false },
   status: { type: String, enum: ['TODO', 'IN_PROGRESS', 'DONE'], required: false },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment', required: false }],
 }, { collection: 'Task' });
 
 export default model<Task>('Task', TaskSchema);
