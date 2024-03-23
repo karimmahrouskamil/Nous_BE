@@ -8,7 +8,7 @@ export class CommentRouter {
         const router = express.Router();
 
         router.get('/:taskId', CommentController.getAllComments);
-        router.post('/:taskId/comments', CommentController.createComments);
+        router.post('/:taskId', CommentController.createComments);
         router.delete('/:taskId/comments/:commentId', CommentController.deleteComment);
         
         return router;
