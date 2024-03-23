@@ -13,4 +13,8 @@ export class CommentService {
         const newComment = ({ text: comment, taskId } as Comment);
         return (await CommentModel.create(newComment));
     }
+   
+    public static async deleteComment(taskId: string, commentId: string): Promise<void> {
+        await CommentModel.findByIdAndDelete({ _id: commentId, taskId: taskId });
+      }
 }

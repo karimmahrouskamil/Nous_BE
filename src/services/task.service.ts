@@ -6,7 +6,7 @@ export class TaskService {
     return TaskModel.find();
   }
   public static async getTaskById(id): Promise<Task[] | any> {
-    const foundTask = TaskModel.findById(id)
+    const foundTask = TaskModel.findById(id).populate('comments')
     if (!foundTask) {
       throw new Error('Task not found');
   }

@@ -9,6 +9,7 @@ export class CommentRouter {
 
         router.get('/:taskId', CommentController.getAllComments);
         router.post('/:taskId/comments', CommentController.createComments);
+        router.delete('/:taskId/comments/:commentId', CommentController.deleteComment);
         
         return router;
     }

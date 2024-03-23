@@ -27,4 +27,20 @@ export class CommentController {
       }
     }
   } 
+  public static async deleteComment(req: Request, res: Response, _next: NextFunction) {
+    const taskId = req.params.taskId;
+    const commentId = req.params.commentId;
+    try {
+      await CommentService.deleteComment(taskId, commentId);
+      res.status(204).send(); // No content
+    } catch (err) {
+      if (err.message.includes('Task not found')) {
+        res.status(404).json({ message: 'Task not found' });
+      } else if (err.message.includes('Cast to ObjectId failed')) {
+        res.status(400).json({ message: 'Invalid comment ID' });
+      } else {
+        res.status(500).json({ message: err.message });
+      }
+    }
+  } 
 };
