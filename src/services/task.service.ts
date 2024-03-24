@@ -12,7 +12,7 @@ export class TaskService {
   }
     return foundTask;
   }
-  public static async updateTaskById(id, data): Promise<Task | null> {
+  public static async updateTaskById(id: string, data): Promise<Task | null> {
     return TaskModel.findByIdAndUpdate(id, data, { new: true })
   }
   public static async createTask(data: Task): Promise<Task> {
