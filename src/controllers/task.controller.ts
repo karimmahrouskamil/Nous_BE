@@ -12,8 +12,8 @@ export class TaskController {
   }
   public static async getTaskById(req: Request, res: Response, _next: NextFunction) {
     try {
-      const id = req.params.id
-      const task = await TaskService.getTaskById(id);
+      const id = req.params.id 
+      const task = await TaskService.getTaskById(id); 
       res.status(200).json(task);
     } catch (error) { 
       _next(error);

@@ -5,7 +5,7 @@ export class TaskService {
   public static async getAllTasks(): Promise<Task[]> {
     return TaskModel.find();
   }
-  public static async getTaskById(id): Promise<Task[] | any> {
+  public static async getTaskById(id: string): Promise<Task[] | any> {
     const foundTask = TaskModel.findById(id).populate('comments')
     if (!foundTask) {
       throw new Error('Task not found');
