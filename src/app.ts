@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import { TaskRouter } from './routes/task.router';
 import bodyParser from 'body-parser'
 import { CommentRouter } from './routes/comment.router';
+import cors from 'cors';
 export class Application {
   public express;
 
@@ -23,7 +24,9 @@ export class Application {
           res.status(500).send('Something broke!');
         }
       });
-
+      this.express.use(cors({
+        origin: 'http://localhost:4200'
+    }));
       this.express.use('/comments', commentRouter.createRoutes());
       this.express.use('/tasks', taskRouter.createRoutes());
       resolve();
